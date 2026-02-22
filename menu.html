@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Haldiram's Specialities</title>
+    <link rel="stylesheet" href="menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="menu-header">
+        <h1>Menu</h1>
+        <p>Haldirams Specialities | Chinese | South Indian | Continental & More</p>
+        <h2>Taste of Tradition</h2>
+    </header>
+
+    <nav class="category-bar">
+        <div class="category-nav" id="catNav"></div>
+    </nav>
+
+    <main class="menu-container" id="menuBody"></main>
+
+    <footer>
+        <h3>Haldiram's Specialities</h3>
+        <p>Authentic Indian cuisine with love</p>
+    </footer>
+
+    <script>
+        const fullMenu = [
+            {
+                cat: "Haldirams Specialities",
+                items: [
+                    { name: "Haldiram's Special Thali", price: "339.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300" },
+                    { name: "Haldiram's Royal Thali", price: "389.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300" },
+                    { name: "Shahi Raj Kachori", price: "149.00", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=300" },
+                    { name: "Chole Kulche", price: "179.00", img: "https://images.unsplash.com/photo-1626132647523-66dbeac34534?auto=format&fit=crop&w=300" },
+                    { name: "Chole Bhature", price: "199.00", img: "https://images.unsplash.com/photo-1626132647523-66dbeac34534?auto=format&fit=crop&w=300" },
+                    { name: "Mumbai Street Pav Bhaji", price: "179.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Paneer Tikka Kathi Roll", price: "189.00", img: "https://images.unsplash.com/photo-1567184109171-969977ec146a?auto=format&fit=crop&w=300" },
+                    { name: "Grilled Exotic Veg Sizzler", price: "359.00", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300" },
+                    { name: "Cottage Cheese Steak Sizzler", price: "359.00", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300" },
+                    { name: "Oriental Sizzler", price: "359.00", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300" },
+                    { name: "Cheese Pao Bhaji", price: "189.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Matka Veg Biryani", price: "309.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" },
+                    { name: "New Matka Paneer Tikka Biryani", price: "349.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Chinese Main Course",
+                items: [
+                    { name: "Gravy Manchurian", price: "289.00", img: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=300" },
+                    { name: "Paneer In Soy Garlic Sauce", price: "309.00", img: "https://images.unsplash.com/photo-1567184109171-969977ec146a?auto=format&fit=crop&w=300" },
+                    { name: "Paneer In Hot Garlic Sauce", price: "309.00", img: "https://images.unsplash.com/photo-1567184109171-969977ec146a?auto=format&fit=crop&w=300" },
+                    { name: "Vegetable Balls In Hot Garlic Sauce", price: "289.00", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300" },
+                    { name: "Stir Fried Vegetable In Hot Garlic Sauce", price: "289.00", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=300" },
+                    { name: "Exotic Vegetable In Soy Garlic Sauce", price: "289.00", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Rice & Roti",
+                items: [
+                    { name: "Tandoori Roti", price: "29.00", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=300" },
+                    { name: "Lachha Paratha", price: "49.00", img: "https://images.unsplash.com/photo-1626804475297-411d863b5285?auto=format&fit=crop&w=300" },
+                    { name: "Butter Naan", price: "59.00", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=300" },
+                    { name: "Butter Garlic Naan", price: "69.00", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=300" },
+                    { name: "Steam Rice", price: "169.00", img: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=300" },
+                    { name: "Jeera Rice", price: "179.00", img: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=300" },
+                    { name: "Green Peas Pulao", price: "189.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" },
+                    { name: "Tandoori Butter Roti", price: "39.00", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Noodle & Rice",
+                items: [
+                    { name: "Vegetable Chowmein", price: "199.00", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=300" },
+                    { name: "Chilly Garlic Noodles", price: "219.00", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=300" },
+                    { name: "Chilly Garlic Fried Rice", price: "219.00", img: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=300" },
+                    { name: "Chow Fried Rice", price: "199.00", img: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "South Indian",
+                items: [
+                    { name: "Masala Dosa", price: "149.00", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=300" },
+                    { name: "New Ragi Masala Dosa", price: "169.00", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=300" },
+                    { name: "New Ghee Roast Masala Dosa", price: "179.00", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=300" },
+                    { name: "New Crispy Ghee Plain Dosa", price: "139.00", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=300" },
+                    { name: "Chilly Paneer Dosa", price: "189.00", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=300" },
+                    { name: "Idli Sambhar", price: "89.00", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=300" },
+                    { name: "New Ragi Idli Sambhar", price: "99.00", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=300" },
+                    { name: "New Vegetable Appe", price: "139.00", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=300" },
+                    { name: "New Cheese & Vegetable Appe", price: "159.00", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=300" },
+                    { name: "Idli Wada Sambhar", price: "99.00", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=300" },
+                    { name: "Assorted Platter", price: "229.00", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300" },
+                    { name: "Mix Veg Uttapam", price: "179.00", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=300" },
+                    { name: "Rawa Masala Dosa", price: "159.00", img: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=300" },
+                    { name: "Sambhar Wada", price: "99.00", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Continental",
+                items: [
+                    { name: "Bombay Street Sandwich", price: "149.00", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=300" },
+                    { name: "Paneer Tikka Sandwich", price: "159.00", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=300" },
+                    { name: "Spinach & Corn Sandwich", price: "159.00", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=300" },
+                    { name: "New Pizza Sandwich", price: "149.00", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=300" },
+                    { name: "Vegetable Cheese Sandwich", price: "129.00", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=300" },
+                    { name: "Cheesy Veggie Burger", price: "109.00", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=300" },
+                    { name: "Penne In Red Sauce With Garlic Bread", price: "239.00", img: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=300" },
+                    { name: "Penne In White Sauce With Garlic Bread", price: "239.00", img: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=300" },
+                    { name: "Penne In Pink Sauce With Garlic Bread", price: "239.00", img: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=300" },
+                    { name: "New Too Spicy Panner Pizza", price: "269.00", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300" },
+                    { name: "Farmhouse Pizza", price: "269.00", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Dessert",
+                items: [
+                    { name: "Chocolate Brownie With Vanilla Ice Cream", price: "229.00", img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=300" },
+                    { name: "Matka Kulfi", price: "79.00", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Chinese Combo",
+                items: [
+                    { name: "Chinese Combo 1", price: "0.00", img: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=300", combo: ["Chilli Garlic Noodles", "Fried Rice", "Vegetable Momo", "Vegetable Manchurian", "Paneer In Hot Garlic Sauce", "Mojito", "2 portion", "Lemon Ice Tea", "2 portions"] }
+                ]
+            },
+            {
+                cat: "Indian Combo",
+                items: [
+                    { name: "Indian Combo 1", price: "0.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300", combo: ["Kadhal Paneer", "Mix Vegetable", "Dal Tadka", "Jeem Rice", "Bread Basket", "Lachha paratha, butter naan, butter rod 2", "Fresh Lime Soda", "2 portions", "Mint Mojo", "2 portions"] }
+                ]
+            },
+            {
+                cat: "Western Combo",
+                items: [
+                    { name: "Western Combo", price: "0.00", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300", combo: ["Pizza Farm House", "Penne In Red Sauce", "Paneer Tikka Sandwich", "Penne In White Sauce", "Fresh Lime Soda", "2 portions", "Mint Mojito", "2 portions"] }
+                ]
+            },
+            {
+                cat: "Healthy Taste",
+                items: [
+                    { name: "5 Millet Vegetable Biryani", price: "319.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" },
+                    { name: "Paneer Platter", price: "319.00", img: "https://images.unsplash.com/photo-1567184109171-969977ec146a?auto=format&fit=crop&w=300", combo: ["(Tandoor/haryali & malai)"] },
+                    { name: "5 Millet Vegetable Khichdi", price: "249.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" },
+                    { name: "Palak Paneer Khichdi", price: "249.00", img: "https://images.unsplash.com/photo-1567184109171-969977ec146a?auto=format&fit=crop&w=300" },
+                    { name: "Vegetable Clear Soup With Noodles", price: "149.00", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=300" },
+                    { name: "Ragi Papdi Chaat", price: "146.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Vegetable Cheese & Oats Fingers", price: "99.00", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300" },
+                    { name: "Dal Shorba", price: "99.00", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Beverages",
+                items: [
+                    { name: "Tea", price: "49.00", img: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=300" },
+                    { name: "Coffee", price: "79.00", img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=300" },
+                    { name: "Mineral Water", price: "0.00", img: "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=300" },
+                    { name: "Soft Drink Cans", price: "0.00", img: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Thali",
+                items: [
+                    { name: "Haldiram Royal Thali", price: "409.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300", combo: ["(Haldiram special thali with rasmalai + kadhai paneer + butter buttermilk)"] },
+                    { name: "Punjabi Thali", price: "359.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300", combo: ["(Sarson ka saag/rajma / shahi kofta curry with raita, moong dal halwa, jeera rice/1 lachha paratha, 1 makai ki roti.)"] },
+                    { name: "Haldiram Special Thali", price: "359.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300", combo: ["(Paneer butter masala, mix veg, dal makhani, rice, 2 paratha, raita, papad, pickle & rasgulla)"] }
+                ]
+            },
+            {
+                cat: "Sweets & Dessert",
+                items: [
+                    { name: "Choco Lava With Ice Cream", price: "109.00", img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=300" },
+                    { name: "Rasmalai Pastry", price: "89.00", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=300", combo: ["(1pc)"] },
+                    { name: "Flavoured Rasgulla", price: "59.00", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=300", combo: ["(2pc)-(rose/watermelon)"] },
+                    { name: "Biscoff Rasmalai", price: "59.00", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=300" },
+                    { name: "Gud Rasmalai", price: "0.00", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=300", combo: ["(2pc)"] },
+                    { name: "Gud Rasgulla", price: "0.00", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=300", combo: ["(2pc)"] },
+                    { name: "Gajar Ka Halwa", price: "0.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Moong Dal Halwa", price: "0.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Garam Gulab Jamun", price: "0.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Khichdi",
+                items: [
+                    { name: "Palak Paneer Khichdi", price: "249.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" },
+                    { name: "5 Millet Vegetable Khichdi", price: "249.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" },
+                    { name: "Dal Chawal Khichdi", price: "239.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Chinese",
+                items: [
+                    { name: "Paneer In Hot Garlic Sauce", price: "309.00", img: "https://images.unsplash.com/photo-1567184109171-969977ec146a?auto=format&fit=crop&w=300" },
+                    { name: "Veg Balls In Manchurian Sauce", price: "299.00", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300" },
+                    { name: "Bento Box", price: "289.00", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300", combo: ["(2+2 spring roll/4 fried momo / manchurian 3 pc)"] },
+                    { name: "Veg Chowmein", price: "209.00", img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=300" },
+                    { name: "Chow Fried Rice", price: "209.00", img: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=300" },
+                    { name: "American Chop Suey", price: "209.00", img: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=300" },
+                    { name: "Chilli Potato", price: "169.00", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Gravies & Curry",
+                items: [
+                    { name: "Kaju Masala Curry", price: "339.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300" },
+                    { name: "Paneer Butter Masala", price: "319.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300" },
+                    { name: "Kadhai Paneer", price: "319.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300" },
+                    { name: "Palak Paneer", price: "309.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300" },
+                    { name: "Paneer In White Gravy", price: "309.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300" },
+                    { name: "Shahi Kofta Curry - Jain", price: "299.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300" },
+                    { name: "Mix Veg", price: "299.00", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=300" },
+                    { name: "Soya Chaap Tikka Masala", price: "289.00", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=300" },
+                    { name: "Methi Matar Malai", price: "289.00", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=300" },
+                    { name: "Sarson Ka Saag", price: "279.00", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=300" },
+                    { name: "Kadhai Mushroom", price: "279.00", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=300" },
+                    { name: "Amritsari Dal Makhani", price: "269.00", img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=300" },
+                    { name: "Rajma Masala", price: "259.00", img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=300" },
+                    { name: "Dal Tadka", price: "239.00", img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Combo Platter",
+                items: [
+                    { name: "Sarson Ka Saag With Makai Roti, Gajjak & Gajar Ka Halwa", price: "279.00", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=300" },
+                    { name: "Dal Makhani With Tandoori Makai Roti, Gajjak & Moong Dal Halwa", price: "269.00", img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=300" },
+                    { name: "Chole Bhature With Gajar Halwa", price: "259.00", img: "https://images.unsplash.com/photo-1626132647523-66dbeac34534?auto=format&fit=crop&w=300" },
+                    { name: "Sarson Ka Saag With Makai Roti", price: "239.00", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=300" },
+                    { name: "Aloo Paratha With Dal Makhani, Raita & Till Roll", price: "199.00", img: "https://images.unsplash.com/photo-1626804475297-411d863b5285?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Tandoori Paratha",
+                items: [
+                    { name: "Tandoori Paneer Paratha", price: "149.00", img: "https://images.unsplash.com/photo-1626804475297-411d863b5285?auto=format&fit=crop&w=300", combo: ["(With curd & butter)"] },
+                    { name: "Tandoori Aloo Paratha", price: "119.00", img: "https://images.unsplash.com/photo-1626804475297-411d863b5285?auto=format&fit=crop&w=300", combo: ["(With curd & butter)"] }
+                ]
+            },
+            {
+                cat: "Matka Biryani",
+                items: [
+                    { name: "Paneer Tikka Biryani", price: "369.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" },
+                    { name: "Vegetable Matka Biryani", price: "329.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" },
+                    { name: "5 Millet Vegetable Biryani", price: "319.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Rice Combo",
+                items: [
+                    { name: "Palak Paneer Chawal", price: "189.00", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300" },
+                    { name: "Rajma Chawal", price: "179.00", img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=300" },
+                    { name: "Chole Chawal", price: "179.00", img: "https://images.unsplash.com/photo-1626132647523-66dbeac34534?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Rajwada Rasoi Thali",
+                items: [
+                    { name: "Rajwada Rasoi Thali", price: "0.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300", combo: ["Paneer Butter Masala", "Dahi Chaulai", "Aloo Tamatar", "Undhiyu", "Dal Panchmel", "Kadi Gujarati", "Plain Rice", "Veg Pulao", "Phulka Roti", "Bajra Roti", "Missi Roti", "Mini Kachori", "Khaman Dhokla", "Dahi Wada", "Bengali Sweet", "Single serving", "Sprout Salad", "Roasted Papad", "Butter Milk", "Optional: Amla Sharbat"] }
+                ]
+            },
+            {
+                cat: "Starters & Sides",
+                items: [
+                    { name: "Spicy Butter Corn Chaat", price: "129.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300", combo: ["(New)"] },
+                    { name: "Palak Patta Chaat", price: "129.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Ghee Podi Idli", price: "99.00", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=300" },
+                    { name: "Sarson Ka Saag", price: "249.00", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=300", combo: ["(New)"] },
+                    { name: "Aloo Puri With Suji Halwa", price: "159.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300", combo: ["(New)"] }
+                ]
+            },
+            {
+                cat: "Asian - New Launch",
+                items: [
+                    { name: "Potato Fritters", price: "129.00", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300" },
+                    { name: "Crispy Kurkure Momo", price: "129.00", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=300" },
+                    { name: "Butter Corriander Veg Rice", price: "199.00", img: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=300" },
+                    { name: "Thai Green Curry With Herb Infused Rice", price: "299.00", img: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=300" },
+                    { name: "Thai Red Curry With Herb Infused Rice", price: "299.00", img: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Breads",
+                items: [
+                    { name: "Makke Ki Roti", price: "49.00", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=300", combo: ["(1pc)"] },
+                    { name: "Poori", price: "39.00", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=300", combo: ["(2 pcs)"] }
+                ]
+            },
+            {
+                cat: "Sweet Treat",
+                items: [
+                    { name: "Choco Lava With Ice Cream", price: "99.00", img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=300" },
+                    { name: "Moong Dal Halwa", price: "119.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Gajar Ka Halwa", price: "109.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Gud Rasmalai", price: "79.00", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=300", combo: ["(2 pcs)"] },
+                    { name: "Gud Rasgulla", price: "49.00", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=300", combo: ["(2 pcs)"] },
+                    { name: "Gud Milk Kheer", price: "99.00", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=300" },
+                    { name: "Baked Rasgulla", price: "69.00", img: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Soups & Shorba",
+                items: [
+                    { name: "Thupka-Vegetable Clear Soup With Noodles & Momo", price: "149.00", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=300" },
+                    { name: "Dal Shorba", price: "99.00", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=300", combo: ["(New)"] },
+                    { name: "Tomato Soup", price: "99.00", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=300", combo: ["(New)"] }
+                ]
+            },
+            {
+                cat: "Kebabs & More",
+                items: [
+                    { name: "Kebab Platter", price: "329.00", img: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=300", combo: ["(Paneer tikka/paneer haryali / soya tikka/hara kebab / stuff tandoori potato) (new)"] },
+                    { name: "Paneer Platter", price: "319.00", img: "https://images.unsplash.com/photo-1567184109171-969977ec146a?auto=format&fit=crop&w=300", combo: ["(Tandoori/haryali & malai)"] },
+                    { name: "Soya Platter", price: "299.00", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300", combo: ["(Tandoori / malai / haryali)"] },
+                    { name: "Tandoori Aloo Kebab Stuffed With Paneer", price: "169.00", img: "https://images.unsplash.com/photo-1626132647523-66dbeac34534?auto=format&fit=crop&w=300", combo: ["(New)"] },
+                    { name: "Hara Bhara Kebab", price: "159.00", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300", combo: ["(New)"] },
+                    { name: "Kebab Platter Combo With Dal Makhani & Garlic Naan", price: "0.00", img: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=300", combo: ["Kebab Platter (Paneer tikka/paneer haryali / soya tikka/hara kebab / stuff tandoori potato)", "Dal Makhani", "Garlic Naan"] }
+                ]
+            },
+            {
+                cat: "Snacks",
+                items: [
+                    { name: "Mix Pakoda Platter", price: "139.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300", combo: ["(Aloo/paneer/stuffed mirch/palak pyaz) (new)"] },
+                    { name: "Kurkuri Sabudana Tikki", price: "139.00", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300", combo: ["(With curd)"] },
+                    { name: "Hara Bhara Pao Burger", price: "119.00", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=300", combo: ["(2 pc) (new)"] },
+                    { name: "Aloo Tikki Pao Burger", price: "119.00", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=300", combo: ["(2 pc) (new)"] },
+                    { name: "Vegetable Cheese & Oats Fingers", price: "99.00", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300", combo: ["(New)"] },
+                    { name: "Dhokla Platter", price: "89.00", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=300", combo: ["(New)"] }
+                ]
+            },
+            {
+                cat: "Rolls & Wraps",
+                items: [
+                    { name: "Paneer Tikka Kathi Roll", price: "189.00", img: "https://images.unsplash.com/photo-1567184109171-969977ec146a?auto=format&fit=crop&w=300" },
+                    { name: "Chilly Paneer Roll", price: "159.00", img: "https://images.unsplash.com/photo-1567184109171-969977ec146a?auto=format&fit=crop&w=300", combo: ["(New)"] }
+                ]
+            },
+            {
+                cat: "Sandwiches & Burgers",
+                items: [
+                    { name: "Bombay Masala Sandwich", price: "169.00", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=300" },
+                    { name: "Paneer Burger", price: "159.00", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=300" },
+                    { name: "Corn And Spinach Sandwich", price: "159.00", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=300" },
+                    { name: "Double Patty Double Cheese Burger", price: "149.00", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=300", combo: ["(New)"] },
+                    { name: "Piri Piri Fries/French Fries Salted", price: "129.00", img: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=300" },
+                    { name: "Cheesy Veggie Burger", price: "128.00", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Chaat",
+                items: [
+                    { name: "Ragi Papdi Chaat", price: "146.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Aloo Tikki Chaat", price: "129.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Dahi Wada", price: "129.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Bhalla Papdi Chaat", price: "119.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Palak Patta Chaat", price: "119.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Aloo Tikki Chana", price: "109.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Samosa Chaat", price: "109.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" },
+                    { name: "Pani Puri", price: "79.00", img: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Pasta & Pizza",
+                items: [
+                    { name: "Pizza Of Your Choice", price: "279.00", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300", combo: ["(Choose any 3 toppings capsicum/tomato/onion/mushroom/baby corn)"] },
+                    { name: "Spicy Paneer Pizza", price: "279.00", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300" },
+                    { name: "Farmhouse Pizza", price: "269.00", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300" },
+                    { name: "Pasta In White Cheese Sauce", price: "249.00", img: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=300" },
+                    { name: "Pasta In Red Pasta Sauce", price: "249.00", img: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Momos",
+                items: [
+                    { name: "Paneer Tikka Dim Sum", price: "199.00", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=300" },
+                    { name: "Cheese And Spinach Corn Dim Sum", price: "179.00", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=300" },
+                    { name: "Veg Dim Sum", price: "159.00", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=300" },
+                    { name: "Stir Fry Momo With Chilly Garlic Sauce", price: "159.00", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=300" },
+                    { name: "Spicy Veg Momo Steamed", price: "129.00", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=300" }
+                ]
+            },
+            {
+                cat: "Rajwa Di Thali",
+                items: [
+                    { name: "Rajwa Di Thali", price: "0.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300", combo: ["Paneer Jaipuri", "Aloo Mutter", "Gatta Jodhpuri", "Ker Sangri", "Dal Panchmel", "Kadhi Marwadi", "Plain Rice", "Ram Khichdi", "Mirchi Wada", "Rice Dhokla", "Phulka Roti", "Bajra Roti", "Missi Roti", "Hot Jalebi", "Dahi Wada", "Sprout Salad", "Khichiya Papad", "Butter Milk", "Jaljeera"] }
+                ]
+            },
+            {
+                cat: "Dal Baati Churma",
+                items: [
+                    { name: "Dal Baati Churma", price: "0.00", img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=300", combo: ["Today's special"] }
+                ]
+            },
+            {
+                cat: "Others",
+                items: [
+                    { name: "Child Thali", price: "299.00", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300", combo: ["Up to age of 8 years child."] },
+                    { name: "Butter Milk Masala", price: "10.00", img: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=300", combo: ["मसाला छाछ (masala buttermilk), fresh (ताजगी) (300 ml, vegetarian)"] },
+                    { name: "Aam Panna", price: "10.00", img: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=300", combo: ["New! Naturally refreshing in every sip, made with love, perfect chiller for an indian summer!! (150 ml, vegetarian)"] },
+                    { name: "Butter Milk (Plain)", price: "10.00", img: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=300", combo: ["छाछ (chaach), ताक (taak). Net quantity: 450 ml. Cooling & transportation charges are included in mrp (450 ml, vegetarian)"] }
+                ]
+            }
+        ];
+
+        const menuBody = document.getElementById('menuBody');
+        const catNav = document.getElementById('catNav');
+
+        function loadMenu() {
+            fullMenu.forEach(section => {
+                // Add Nav Button
+                const btn = document.createElement('a');
+                btn.href = `#${section.cat.replace(/\s+/g, '').replace(/&/g, 'and').replace(/-/g, '')}`;
+                btn.innerText = section.cat;
+                catNav.appendChild(btn);
+
+                // Add Section
+                const div = document.createElement('div');
+                div.className = 'menu-category';
+                const catId = section.cat.replace(/\s+/g, '').replace(/&/g, 'and').replace(/-/g, '');
+                div.id = catId;
+                div.innerHTML = `<h2 class="category-title">${section.cat}</h2><div class="menu-grid"></div>`;
+                
+                const grid = div.querySelector('.menu-grid');
+                section.items.forEach(item => {
+                    let comboHtml = '';
+                    if (item.combo && item.combo.length > 0) {
+                        comboHtml = `<div class="combo-items">${item.combo.map(c => `<span>${c}</span>`).join('')}</div>`;
+                    }
+                    
+                    let priceDisplay = '';
+                    if (item.price === "0.00") {
+                        priceDisplay = '<span class="price">Ask Server</span>';
+                    } else {
+                        priceDisplay = `<span class="price">₹${item.price}</span>`;
+                    }
+                    
+                    grid.innerHTML += `
+                        <div class="menu-item">
+                            <img src="${item.img}" alt="${item.name}">
+                            <div class="item-info">
+                                <h3>${item.name}</h3>
+                                ${priceDisplay}
+                            </div>
+                            ${comboHtml}
+                        </div>
+                    `;
+                });
+                menuBody.appendChild(div);
+            });
+
+            // Add click event for smooth scrolling
+            catNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+
+        loadMenu();
+    </script>
+</body>
+</html>
