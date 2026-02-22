@@ -113,6 +113,45 @@ nav a:hover::after {
     width: 100%;
 }
 
+/* CALL BUTTON */
+.call-btn {
+    background: #E62020 !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+.call-btn::after {
+    display: none !important;
+}
+
+.call-btn:hover {
+    background: #c51818 !important;
+}
+
+/* CTA BUTTON IN HERO */
+.cta-button {
+    display: inline-block;
+    background: #E62020;
+    color: white;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 30px;
+    margin-top: 25px;
+    animation: heroFadeIn 1.5s ease-out 0.5s both;
+    box-shadow: 0 5px 20px rgba(230,32,32,0.4);
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #c51818;
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(230,32,32,0.5);
+}
+
 /* HERO */
 .hero {
     height: 100vh;
@@ -594,7 +633,7 @@ footer p {
 
 <a href="#menu">Menu</a>
 
-<a href="#contact">Contact</a>
+<a href="#contact"> Address</a>
 
 </nav>
 
@@ -611,7 +650,9 @@ footer p {
 <h1>HALDIRAM'S THAAT BAAT</h1>
 
 <p>Royal Dining Experience</p>
-<P>Anyone want website- 8806166476</P>
+
+<h1>Anyone want website</h1>
+<a href="tel:8806166476" class="cta-button">📞Call Now</a>
 
 <div class="scroll-indicator">
     <i class="fas fa-chevron-down"></i>
