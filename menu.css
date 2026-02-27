@@ -240,7 +240,37 @@ footer p {
     }
     
     .menu-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .menu-item {
+        border-radius: 12px;
+    }
+    
+    .menu-item img {
+        height: 120px;
+    }
+    
+    .item-info {
+        padding: 12px;
+    }
+    
+    .item-info h3 {
+        font-size: 0.85rem;
+    }
+    
+    .item-info .price {
+        font-size: 0.9rem;
+    }
+    
+    .combo-items span {
+        font-size: 0.65rem;
+        padding: 3px 6px;
+    }
+    
+    .category-title {
+        font-size: 1.5rem;
     }
 }
 
